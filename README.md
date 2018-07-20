@@ -12,7 +12,7 @@ Built in response to [this issue](https://github.com/tesseract-ocr/langdata/issu
 * Unicode fonts supporting the Javanese code-range need to be used.
 * Source code changes will be needed in tesseract, additions will be similar to Khmer/Mynamar or Thai.
 
-## Custom bash scripts 
+## Custom bash scripts - run in following order
 
 ./makeeval.sh
 
