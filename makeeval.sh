@@ -2,7 +2,7 @@
 MakeEval=yes
 # Language 
 Lang=jav_java
-EText=TEST
+EText=eval
 Baselang=jav1
 # directory with the old 'best' training set
 bestdata_dir=../tessdata_best
@@ -12,6 +12,8 @@ tessdata_dir=../tessdata
 langdata_dir=./langdata
 # directory with training scripts - tesstrain.sh etc. 
 tesstrain_dir=./tesseract-training
+# workspacedir
+work_dir=../tmp
 # fonts directory for this system
 fonts_dir=../.fonts
 # fonts for computing evals of best fit model
@@ -29,13 +31,13 @@ OMP_THREAD_LIMIT=1   eval   bash $tesstrain_dir/tesstrain.sh \
 --fonts_dir $fonts_dir \
 --fontlist $fonts_for_eval \
 --exposures "0" \
---maxpages 3 \
 --lang $Lang \
 --linedata_only \
 --noextract_font_properties \
 --langdata_dir $langdata_dir \
 --tessdata_dir  $tessdata_dir \
---training_text $langdata_dir/$Lang/$Lang.$EText.training_text \
+--workspace_dir $work_dir \
+--training_text $langdata_dir/$Lang/$Lang.eval.training_text \
 --output_dir $eval_output_dir
 
 fi
