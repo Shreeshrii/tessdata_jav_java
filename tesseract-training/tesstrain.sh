@@ -32,6 +32,8 @@
 #    --training_text TEXTFILE   # Text to render and use for training.
 #    --wordlist WORDFILE        # Word list for the language ordered by
 #                               # decreasing frequency.
+#    --textlist TEXTNAMES    # A list of filenames for text to render.
+#                               # Works like fontlist. Overrides training_text.
 #
 # OPTIONAL flag to specify location of existing traineddata files, required
 # during feature extraction. If unspecified will use TESSDATA_PREFIX defined in
@@ -53,13 +55,6 @@ parse_flags
 mkdir -p ${TRAINING_DIR}
 tlog "\n=== Starting training for language '${LANG_CODE}'"
 
-# copy box tiff pairs from langdata/lang directory #shree
-cp ../langdata/${LANG_CODE}/*.tif "${TRAINING_DIR}/"  #shree
-cp ../langdata/${LANG_CODE}/*.box "${TRAINING_DIR}/"  #shree
-cp ../langdata/${LANG_CODE}/*.lstmf "${TRAINING_DIR}/"  #shree, don't inlude box/tiff for these
-ls -l "${TRAINING_DIR}/"    #shree      
-sleep 1
-
 source "$(dirname $0)/language-specific.sh"
 set_lang_specific_parameters ${LANG_CODE}
 
@@ -68,7 +63,7 @@ initialize_fontconfig
 phase_I_generate_image 8
 phase_UP_generate_unicharset
 if ((LINEDATA)); then
-  phase_E_extract_features "lstm.train" 8 "lstmf"
+  phase_E_extract_features " --psm 6  lstm.train " 8 "lstmf"
   make__lstmdata
   tlog "\nCreated starter traineddata for language '${LANG_CODE}'\n"
   tlog "\nRun lstmtraining to do the LSTM training for language '${LANG_CODE}'\n"

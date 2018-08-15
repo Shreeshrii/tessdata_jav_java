@@ -1,5 +1,0 @@
-./jav_java-layer_eval/jav_java.Carakan_Anyar.exp0.lstmf
-./jav_java-layer_eval/jav_java.Carakan-Unicode.exp0.lstmf
-./jav_java-layer_eval/jav_java.Javanese_Text.exp0.lstmf
-./jav_java-layer_eval/jav_java.Prada.exp0.lstmf
-./jav_java-layer_eval/jav_java.Tuladha_Jejeg.exp0.lstmf

@@ -1,5 +1,0 @@
-  'Carakan Anyar' \
-  'Carakan-Unicode' \
-  'Javanese Text' \
-  'Noto Sans Javanese' \
-  'Tuladha Jejeg' \

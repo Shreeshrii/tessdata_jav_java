@@ -18,9 +18,12 @@
 
 if [ "$(uname)" == "Darwin" ];then
     FONTS_DIR="/Library/Fonts/"
+    FONT_CONFIG_CACHE=$(mktemp -d -t font_tmp.XXXXXXXXXX)
 else
     FONTS_DIR="/usr/share/fonts/"
+    FONT_CONFIG_CACHE=$(mktemp -d --tmpdir font_tmp.XXXXXXXXXX)
 fi
+MAXPAGES=0
 OUTPUT_DIR="/tmp/tesstrain/tessdata"
 OVERWRITE=0
 LINEDATA=0
@@ -128,6 +131,9 @@ parse_flags() {
             --langdata_dir)
                 parse_value "LANGDATA_ROOT" ${ARGV[$j]}
                 i=$j ;;
+            --maxpages)
+                parse_value "MAXPAGES" ${ARGV[$j]}
+                i=$j ;;
             --output_dir)
                 parse_value "OUTPUT_DIR" ${ARGV[$j]}
                 i=$j ;;
@@ -145,8 +151,26 @@ parse_flags() {
             --training_text)
                 parse_value "TRAINING_TEXT" "${ARGV[$j]}"
                 i=$j ;;
+            --textlist)
+                fn=0
+                TEXTS=""
+                while test $j -lt ${#ARGV[@]}; do
+                    test -z "${ARGV[$j]}" && break
+                    test $(echo ${ARGV[$j]} | cut -c -2) = "--" && break
+                    TEXTS[$fn]="${ARGV[$j]}"
+                    fn=$((fn+1))
+                    j=$((j+1))
+                done
+                i=$((j-1)) ;;
             --wordlist)
                 parse_value "WORDLIST_FILE" ${ARGV[$j]}
+                i=$j ;;
+            --workspace_dir)
+                rmdir "$FONT_CONFIG_CACHE"
+                rmdir "$WORKSPACE_DIR"
+                parse_value "WORKSPACE_DIR" ${ARGV[$j]}
+                FONT_CONFIG_CACHE=$WORKSPACE_DIR/fc-cache
+                mkdir -p $FONT_CONFIG_CACHE
                 i=$j ;;
             *)
                 err_exit "Unrecognized argument ${ARGV[$i]}" ;;
@@ -192,11 +216,7 @@ parse_flags() {
 
 # Function initializes font config with a unique font cache dir.
 initialize_fontconfig() {
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-      export FONT_CONFIG_CACHE=$(mktemp -d -t font_tmp.XXXXXXXXXX)
-    else
-      export FONT_CONFIG_CACHE=$(mktemp -d --tmpdir font_tmp.XXXXXXXXXX)
-    fi
+    export FONT_CONFIG_CACHE
     local sample_path=${FONT_CONFIG_CACHE}/sample_text.txt
     echo "Text" >${sample_path}
     run_command text2image --fonts_dir=${FONTS_DIR} \
@@ -211,32 +231,48 @@ generate_font_image() {
     tlog "Rendering using ${font}"
     local fontname=$(echo ${font} | tr ' ' '_' | sed 's/,//g')
     local outbase=${TRAINING_DIR}/${LANG_CODE}.${fontname}.exp${EXPOSURE}
+
     local common_args="--fontconfig_tmpdir=${FONT_CONFIG_CACHE}"
     common_args+=" --fonts_dir=${FONTS_DIR} --strip_unrenderable_words"
-    common_args+=" --leading=${LEADING} --xsize 2560"
+    common_args+=" --leading=${LEADING}"
     common_args+=" --char_spacing=${CHAR_SPACING} --exposure=${EXPOSURE}"
-    common_args+=" --outputbase=${outbase} --max_pages=0"
 
-    # add --writing_mode=vertical-upright to common_args if the font is
-    # specified to be rendered vertically.
-    for vfont in "${VERTICAL_FONTS[@]}"; do
-      if [[ "${font}" == "${vfont}" ]]; then
-        common_args+=" --writing_mode=vertical-upright "
-        break
-      fi
-    done
-	
-# create 500 line training_text for each font+exposure combo
-# smaller training files, more chances of all samples being used for training
-# sleep 1 may avoid the file error ... lstmf does not exist or is not readable
-    sleep 1
-    rm -rf ./tmp_training_text ./tmp_thistraining_text
-    shuf ${TRAINING_TEXT}  > ./tmp_training_text
-	head -500 ./tmp_training_text > ./tmp_thistraining_text 
+    if [[ ${#TEXTS[@]} -eq 0 ]]; then
+        common_args+=" --outputbase=${outbase} --max_pages=${MAXPAGES}"
 
-    run_command text2image ${common_args} --font="${font}" \
-        --text=./tmp_thistraining_text ${TEXT2IMAGE_EXTRA_ARGS}
-    check_file_readable ${outbase}.box ${outbase}.tif
+        # add --writing_mode=vertical-upright to common_args if the font is
+        # specified to be rendered vertically.
+        for vfont in "${VERTICAL_FONTS[@]}"; do
+          if [[ "${font}" == "${vfont}" ]]; then
+            common_args+=" --writing_mode=vertical-upright "
+            break
+          fi
+        done
+        
+        run_command text2image ${common_args} --font="${font}" \
+            --text=${TRAINING_TEXT} ${TEXT2IMAGE_EXTRA_ARGS}
+        check_file_readable ${outbase}.box ${outbase}.tif
+    else
+        for ((i = 0; i < ${#TEXTS[@]}; i++))
+        do
+            outbase=${TRAINING_DIR}/${LANG_CODE}.${i}.${fontname}.exp${EXPOSURE}
+
+            local base_args="${common_args} --outputbase=${outbase} --max_pages=100"
+
+            # add --writing_mode=vertical-upright to common_args if the font is
+            # specified to be rendered vertically.
+            for vfont in "${VERTICAL_FONTS[@]}"; do
+              if [[ "${font}" == "${vfont}" ]]; then
+                base_args+=" --writing_mode=vertical-upright "
+                break
+              fi
+            done
+
+            run_command text2image ${base_args} --font="${font}" \
+                --text=${TEXTS[$i]} ${TEXT2IMAGE_EXTRA_ARGS}
+            check_file_readable ${outbase}.box ${outbase}.tif
+        done
+    fi
 
     if ((EXTRACT_FONT_PROPERTIES)) &&
         [[ -r ${TRAIN_NGRAMS_FILE} ]]; then
@@ -287,9 +323,18 @@ phase_I_generate_image() {
         wait
         # Check that each process was successful.
         for font in "${FONTS[@]}"; do
-            local fontname=$(echo ${font} | tr ' ' '_' | sed 's/,//g')
-            local outbase=${TRAINING_DIR}/${LANG_CODE}.${fontname}.exp${EXPOSURE}
-            check_file_readable ${outbase}.box ${outbase}.tif
+            if [[ ${#TEXTS[@]} -eq 0 ]]; then
+                local fontname=$(echo ${font} | tr ' ' '_' | sed 's/,//g')
+                local outbase=${TRAINING_DIR}/${LANG_CODE}.${fontname}.exp${EXPOSURE}
+                check_file_readable ${outbase}.box ${outbase}.tif
+            else
+                for ((i = 0; i < ${#TEXTS[@]}; i++))
+                do
+                    local fontname=$(echo ${font} | tr ' ' '_' | sed 's/,//g')
+                    local outbase=${TRAINING_DIR}/${LANG_CODE}.${i}.${fontname}.exp${EXPOSURE}
+                    check_file_readable ${outbase}.box ${outbase}.tif
+                done
+            fi
         done
     done
 }
@@ -404,13 +449,12 @@ phase_E_extract_features() {
         config=${LANGDATA_ROOT}/${LANG_CODE}/${LANG_CODE}.config
     fi
 
-
     OLD_TESSDATA_PREFIX=${TESSDATA_PREFIX}
     export TESSDATA_PREFIX=${TESSDATA_DIR}
     tlog "Using TESSDATA_PREFIX=${TESSDATA_PREFIX}"
     local counter=0
     for img_file in ${img_files}; do
-        run_command tesseract ${img_file} ${img_file%.*} --psm 6 \
+        run_command tesseract ${img_file} ${img_file%.*} \
             ${box_config} ${config} &
       let counter=counter+1
       let rem=counter%par_factor
@@ -544,7 +588,6 @@ make__lstmdata() {
   done
   local lstm_list="${OUTPUT_DIR}/${LANG_CODE}.training_files.txt"
   ls -1 "${OUTPUT_DIR}/${LANG_CODE}".*.lstmf > "${lstm_list}"
-  rm ./tmp*
 }
 
 make__traineddata() {
@@ -578,3 +621,4 @@ make__traineddata() {
   tlog "Moving ${TRAINING_DIR}/${LANG_CODE}.traineddata to ${OUTPUT_DIR}"
   cp -f ${TRAINING_DIR}/${LANG_CODE}.traineddata ${destfile}
 }
+
