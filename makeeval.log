@@ -1,0 +1,619 @@
++ MakeEval=yes
++ Lang=jav_java
++ EText=eval
++ Baselang=jav1
++ bestdata_dir=../tessdata_best
++ tessdata_dir=../tessdata
++ langdata_dir=./langdata
++ tesstrain_dir=./tesseract-training
++ work_dir=./tmp
++ fonts_dir=../.fonts
++ fonts_for_eval='   '\''Prada'\''   '
++ eval_output_dir=./jav_java-eval
++ '[' yes = yes ']'
++ echo '###### MAKING EVAL DATA ######'
+###### MAKING EVAL DATA ######
++ rm -rf ./jav_java-eval
++ mkdir ./jav_java-eval
++ OMP_THREAD_LIMIT=1
++ eval bash ./tesseract-training/tesstrain.sh --fonts_dir ../.fonts --fontlist ''\''Prada'\''' --exposures 0 --lang jav_java --linedata_only --noextract_font_properties --langdata_dir ./langdata --tessdata_dir ../tessdata --workspace_dir ./tmp --training_text ./langdata/jav_java/jav_java.eval.training_text --output_dir ./jav_java-eval
+++ bash ./tesseract-training/tesstrain.sh --fonts_dir ../.fonts --fontlist Prada --exposures 0 --lang jav_java --linedata_only --noextract_font_properties --langdata_dir ./langdata --tessdata_dir ../tessdata --workspace_dir ./tmp --training_text ./langdata/jav_java/jav_java.eval.training_text --output_dir ./jav_java-eval
+
+=== Starting training for language 'jav_java'
+[Thu Aug 16 07:30:39 UTC 2018] /usr/local/bin/text2image --fonts_dir=../.fonts --font=Prada --outputbase=./tmp/fc-cache/sample_text.txt --text=./tmp/fc-cache/sample_text.txt --fontconfig_tmpdir=./tmp/fc-cache
+Rendered page 0 to file ./tmp/fc-cache/sample_text.txt.tif
+
+=== Phase I: Generating training images ===
+Rendering using Prada
+[Thu Aug 16 07:30:42 UTC 2018] /usr/local/bin/text2image --fontconfig_tmpdir=./tmp/fc-cache --fonts_dir=../.fonts --strip_unrenderable_words --leading=32 --char_spacing=0.0 --exposure=0 --outputbase=./tmp/jav_java/jav_java.Prada.exp0 --max_pages=0 --font=Prada --text=./langdata/jav_java/jav_java.eval.training_text
+Stripped 1 unrenderable words
+Rendered page 0 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Rendered page 1 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Rendered page 2 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Rendered page 3 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Rendered page 4 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Rendered page 5 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Stripped 1 unrenderable words
+Rendered page 6 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Rendered page 7 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Rendered page 8 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Rendered page 9 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Rendered page 10 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Rendered page 11 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+Stripped 1 unrenderable words
+Rendered page 12 to file ./tmp/jav_java/jav_java.Prada.exp0.tif
+
+=== Phase UP: Generating unicharset and unichar properties files ===
+[Thu Aug 16 07:31:05 UTC 2018] /usr/local/bin/unicharset_extractor --output_unicharset ./tmp/jav_java/jav_java.unicharset --norm_mode 2 ./tmp/jav_java/jav_java.Prada.exp0.box
+Extracting unicharset from box file ./tmp/jav_java/jav_java.Prada.exp0.box
+Word started with a combiner:0xa9ba
+Word started with a combiner:0xa9b4
+Normalization failed for string 'ꦺꦴ'
+Word started with a combiner:0xa9c0
+Normalization failed for string '꧀ꦲꦶꦁ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧇ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦩ꧀ꦥꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏ꧀ꦢꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧇ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦲꦶꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦗꦿꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦧꦼꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤ꧀ꦱꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦮꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤ꧀ꦏꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦒꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦠ꧀ꦤꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦠꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦭꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧇ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦲꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤ꧀ꦲꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦔꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦠ꧀ꦤꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧊ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦮꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦮꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧇ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦮꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦮꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦥꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦭ꧀ꦏꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦮꦴꦃꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦥꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦱꦼꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦫꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦩꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦱ꧀ꦏꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦠꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦠꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦩ꧀ꦥꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦧꦼꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦲꦼꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦒꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦒꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦝꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦒꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧋ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦩꦼꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦲꦶꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦭ꧀ꦩꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤꦶꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦫꦼꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧈ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦫꦸꦺ'
+Word started with a combiner:0xa9ba
+Word started with a combiner:0xa9b4
+Normalization failed for string 'ꦺꦴ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦥꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦒꦼꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦒꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦢꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦔꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦮꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦠ꧀ꦱꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦲꦶꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦧꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤꦼꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤ꧀ꦠꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦩꦼꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦲꦶꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦫꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤꦶꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤ꧀ꦠꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧈ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦮꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦭ꧀ꦩꦼꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦩꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦭ꧀ꦩꦼꦁꦺ'
+Word started with a combiner:0xa9c0
+Normalization failed for string ' ꧀ꦓꦸ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦲꦶꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧈ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦫꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦗꦿꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦥꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦲꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦱ꧀ꦔꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦫꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string '꧈ꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦔꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦠ꧀ꦤꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤ꧀ꦠꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤ꧀ꦠꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦩꦼꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦠꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤꦶꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦔꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦲꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤ꧀ꦏꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦥꦶꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦭꦸꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦩꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤꦶꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦩꦼꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦤꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦴꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦏꦁꦺ'
+Invalid start of grapheme sequence:M=0xa9b6
+Normalization failed for string 'ꦮꦺꦶ'
+Invalid start of grapheme sequence:M=0xa9bc
+Invalid start of grapheme sequence:P=0xa9b4
+Normalization failed for string 'ꦄꦺꦼꦴ'
+Invalid start of grapheme sequence:N=0xa9bf
+Invalid start of grapheme sequence:M=0xa9ba
+Normalization failed for string 'ꦮ꦳ꦿꦺ'
+Wrote unicharset file ./tmp/jav_java/jav_java.unicharset
+[Thu Aug 16 07:31:06 UTC 2018] /usr/local/bin/set_unicharset_properties -U ./tmp/jav_java/jav_java.unicharset -O ./tmp/jav_java/jav_java.unicharset -X ./tmp/jav_java/jav_java.xheights --script_dir=./langdata
+Loaded unicharset of size 149 from file ./tmp/jav_java/jav_java.unicharset
+Setting unichar properties
+Setting script properties
+Warning: properties incomplete for index 4 = ꧑
+Warning: properties incomplete for index 5 = ꧕
+Warning: properties incomplete for index 6 = ꦎ
+Warning: properties incomplete for index 7 = ꦏ
+Warning: properties incomplete for index 8 = ꧀ꦠ
+Warning: properties incomplete for index 9 = ꦺ
+Warning: properties incomplete for index 10 = ꦴ
+Warning: properties incomplete for index 11 = ꦧ
+Warning: properties incomplete for index 12 = ꦼ
+Warning: properties incomplete for index 13 = ꦂ
+Warning: properties incomplete for index 14 = ꧒
+Warning: properties incomplete for index 15 = ꧐
+Warning: properties incomplete for index 17 = ꦠ
+Warning: properties incomplete for index 18 = ꦸ
+Warning: properties incomplete for index 19 = ꦮ
+Warning: properties incomplete for index 20 = ꦤ
+Warning: properties incomplete for index 21 = ꧀ꦯ
+Warning: properties incomplete for index 22 = ꦶ
+Warning: properties incomplete for index 23 = ꦕ
+Warning: properties incomplete for index 25 = ꧀ꦈ
+Warning: properties incomplete for index 26 = ꧀ꦕ
+Warning: properties incomplete for index 27 = ꧀ꦲ
+Warning: properties incomplete for index 28 = ꧀‌
+Warning: properties incomplete for index 30 = ꧀ꦡ
+Warning: properties incomplete for index 31 = ꧀ꦏ
+Warning: properties incomplete for index 32 = ꦪ
+Warning: properties incomplete for index 33 = ꦾ
+Warning: properties incomplete for index 35 = ꧀ꦭ
+Warning: properties incomplete for index 36 = ꦓ
+Warning: properties incomplete for index 37 = ꧀ꦮ
+Warning: properties incomplete for index 39 = ꦦ
+Warning: properties incomplete for index 41 = ꧇
+Warning: properties incomplete for index 42 = ꦭ
+Warning: properties incomplete for index 43 = ꦩ
+Warning: properties incomplete for index 44 = ꧀ꦆ
+Warning: properties incomplete for index 45 = ꦁ
+Warning: properties incomplete for index 46 = ꦲ
+Warning: properties incomplete for index 48 = ꦯ
+Warning: properties incomplete for index 49 = ꦄ
+Warning: properties incomplete for index 50 = ꦌ
+Warning: properties incomplete for index 52 = ꦥ
+Warning: properties incomplete for index 53 = ꦔ
+Warning: properties incomplete for index 54 = ꧋
+Warning: properties incomplete for index 55 = ꦢ
+Warning: properties incomplete for index 56 = ꦒ
+Warning: properties incomplete for index 57 = ꧀ꦒ
+Warning: properties incomplete for index 58 = ꦱ
+Warning: properties incomplete for index 59 = ꧀ꦗ
+Warning: properties incomplete for index 60 = ꧀ꦱ
+Warning: properties incomplete for index 61 = ꧀ꦪ
+Warning: properties incomplete for index 62 = ꧀ꦤ
+Warning: properties incomplete for index 63 = ꧀ꦫ
+Warning: properties incomplete for index 64 = ꧀ꦔ
+Warning: properties incomplete for index 65 = ꦿ
+Warning: properties incomplete for index 66 = ꦫ
+Warning: properties incomplete for index 67 = ꦗ
+Warning: properties incomplete for index 68 = ꧈
+Warning: properties incomplete for index 69 = ꧀ꦥ
+Warning: properties incomplete for index 70 = ꦆ
+Warning: properties incomplete for index 71 = ꧀ꦩ
+Warning: properties incomplete for index 72 = ꧀ꦧ
+Warning: properties incomplete for index 73 = ꧖
+Warning: properties incomplete for index 74 = ꧘
+Warning: properties incomplete for index 76 = ꧉
+Warning: properties incomplete for index 77 = ꧀ꦝ
+Warning: properties incomplete for index 78 = ꦃ
+Warning: properties incomplete for index 79 = ꦝ
+Warning: properties incomplete for index 80 = ꧀ꦢ
+Warning: properties incomplete for index 81 = ꦚ
+Warning: properties incomplete for index 82 = ꦰ
+Warning: properties incomplete for index 83 = ꦡ
+Warning: properties incomplete for index 84 = ꦊ
+Warning: properties incomplete for index 85 = ꧀ꦟ
+Warning: properties incomplete for index 86 = ꧀ꦦ
+Warning: properties incomplete for index 87 = ꦑ
+Warning: properties incomplete for index 88 = ꦟ
+Warning: properties incomplete for index 89 = ꦨ
+Warning: properties incomplete for index 91 = ꦽ
+Warning: properties incomplete for index 92 = ꦉ
+Warning: properties incomplete for index 93 = ꧀ꦎ
+Warning: properties incomplete for index 94 = ꧗
+Warning: properties incomplete for index 95 = ꧙
+Warning: properties incomplete for index 96 = ꧊
+Warning: properties incomplete for index 97 = ꧔
+Warning: properties incomplete for index 98 = ꧓
+Warning: properties incomplete for index 99 = ꧆
+Warning: properties incomplete for index 100 = ꦛ
+Warning: properties incomplete for index 101 = ꧌
+Warning: properties incomplete for index 102 = ꧍
+Warning: properties incomplete for index 103 = ꧀ꦛ
+Warning: properties incomplete for index 104 = ꦈ
+Warning: properties incomplete for index 105 = ꧀ꦰ
+Warning: properties incomplete for index 106 = ꧅
+Warning: properties incomplete for index 107 = ꧀ꦖ
+Warning: properties incomplete for index 108 = ꧁
+Warning: properties incomplete for index 109 = ꧂
+Warning: properties incomplete for index 110 = ꦣ
+Warning: properties incomplete for index 114 = ꧃
+Warning: properties incomplete for index 115 = ꦻ
+Warning: properties incomplete for index 116 = ꧄
+Warning: properties incomplete for index 117 = ꦹ
+Warning: properties incomplete for index 118 = ꧏ
+Warning: properties incomplete for index 119 = ꧀ꦉ
+Warning: properties incomplete for index 120 = ꧟
+Warning: properties incomplete for index 121 = ꦳
+Warning: properties incomplete for index 124 = ꧀ꦜ
+Warning: properties incomplete for index 125 = ꦜ
+Warning: properties incomplete for index 126 = ꦞ
+Warning: properties incomplete for index 127 = ꦖ
+Warning: properties incomplete for index 128 = ꦙ
+Warning: properties incomplete for index 130 = ꦐ
+Warning: properties incomplete for index 131 = ꧀ꦚ
+Warning: properties incomplete for index 132 = ꧀ꦑ
+Warning: properties incomplete for index 133 = ꧀ꦣ
+Warning: properties incomplete for index 134 = ꧀ꦘ
+Warning: properties incomplete for index 135 = ꧀ꦓ
+Warning: properties incomplete for index 136 = ꧀ꦨ
+Warning: properties incomplete for index 137 = ꧀ꦞ
+Warning: properties incomplete for index 138 = ꧀ꦙ
+Warning: properties incomplete for index 139 = ꧀ꦊ
+Warning: properties incomplete for index 140 = ꦋ
+Warning: properties incomplete for index 141 = ꧀ꦋ
+Warning: properties incomplete for index 142 = ꦬ
+Warning: properties incomplete for index 143 = ꧀ꦬ
+Warning: properties incomplete for index 144 = ꧀ꦐ
+Warning: properties incomplete for index 145 = ꧞
+Warning: properties incomplete for index 146 = ꧀ꦄ
+Warning: properties incomplete for index 147 = ꦷ
+Writing unicharset to file ./tmp/jav_java/jav_java.unicharset
+
+=== Phase E: Generating lstmf files ===
+Using TESSDATA_PREFIX=../tessdata
+[Thu Aug 16 07:31:06 UTC 2018] /usr/local/bin/tesseract ./tmp/jav_java/jav_java.Prada.exp0.tif ./tmp/jav_java/jav_java.Prada.exp0 --psm 6 lstm.train ./langdata/jav_java/jav_java.config
+Tesseract Open Source OCR Engine v4.0.0-beta.4-37-g6295 with Leptonica
+Page 1
+Page 2
+Loaded 30/30 pages (1-30) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 3
+Loaded 63/63 pages (1-63) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 4
+Loaded 95/95 pages (1-95) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 5
+Loaded 127/127 pages (1-127) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 6
+Loaded 160/160 pages (1-160) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 7
+Loaded 192/192 pages (1-192) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 8
+Loaded 223/223 pages (1-223) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 9
+Loaded 255/255 pages (1-255) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 10
+Loaded 288/288 pages (1-288) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 11
+Loaded 321/321 pages (1-321) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 12
+Loaded 348/348 pages (1-348) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+Page 13
+Loaded 380/380 pages (1-380) of document ./tmp/jav_java/jav_java.Prada.exp0.lstmf
+
+=== Constructing LSTM training data ===
+[Thu Aug 16 07:31:19 UTC 2018] /usr/local/bin/combine_lang_model --input_unicharset ./tmp/jav_java/jav_java.unicharset --script_dir ./langdata --words ./langdata/jav_java/jav_java.wordlist --numbers ./langdata/jav_java/jav_java.numbers --puncs ./langdata/jav_java/jav_java.punc --output_dir ./jav_java-eval --lang jav_java --pass_through_recoder
+Loaded unicharset of size 149 from file ./tmp/jav_java/jav_java.unicharset
+Setting unichar properties
+Setting script properties
+Warning: properties incomplete for index 4 = ꧑
+Warning: properties incomplete for index 5 = ꧕
+Warning: properties incomplete for index 6 = ꦎ
+Warning: properties incomplete for index 7 = ꦏ
+Warning: properties incomplete for index 8 = ꧀ꦠ
+Warning: properties incomplete for index 9 = ꦺ
+Warning: properties incomplete for index 10 = ꦴ
+Warning: properties incomplete for index 11 = ꦧ
+Warning: properties incomplete for index 12 = ꦼ
+Warning: properties incomplete for index 13 = ꦂ
+Warning: properties incomplete for index 14 = ꧒
+Warning: properties incomplete for index 15 = ꧐
+Warning: properties incomplete for index 17 = ꦠ
+Warning: properties incomplete for index 18 = ꦸ
+Warning: properties incomplete for index 19 = ꦮ
+Warning: properties incomplete for index 20 = ꦤ
+Warning: properties incomplete for index 21 = ꧀ꦯ
+Warning: properties incomplete for index 22 = ꦶ
+Warning: properties incomplete for index 23 = ꦕ
+Warning: properties incomplete for index 25 = ꧀ꦈ
+Warning: properties incomplete for index 26 = ꧀ꦕ
+Warning: properties incomplete for index 27 = ꧀ꦲ
+Warning: properties incomplete for index 28 = ꧀‌
+Warning: properties incomplete for index 30 = ꧀ꦡ
+Warning: properties incomplete for index 31 = ꧀ꦏ
+Warning: properties incomplete for index 32 = ꦪ
+Warning: properties incomplete for index 33 = ꦾ
+Warning: properties incomplete for index 35 = ꧀ꦭ
+Warning: properties incomplete for index 36 = ꦓ
+Warning: properties incomplete for index 37 = ꧀ꦮ
+Warning: properties incomplete for index 39 = ꦦ
+Warning: properties incomplete for index 41 = ꧇
+Warning: properties incomplete for index 42 = ꦭ
+Warning: properties incomplete for index 43 = ꦩ
+Warning: properties incomplete for index 44 = ꧀ꦆ
+Warning: properties incomplete for index 45 = ꦁ
+Warning: properties incomplete for index 46 = ꦲ
+Warning: properties incomplete for index 48 = ꦯ
+Warning: properties incomplete for index 49 = ꦄ
+Warning: properties incomplete for index 50 = ꦌ
+Warning: properties incomplete for index 52 = ꦥ
+Warning: properties incomplete for index 53 = ꦔ
+Warning: properties incomplete for index 54 = ꧋
+Warning: properties incomplete for index 55 = ꦢ
+Warning: properties incomplete for index 56 = ꦒ
+Warning: properties incomplete for index 57 = ꧀ꦒ
+Warning: properties incomplete for index 58 = ꦱ
+Warning: properties incomplete for index 59 = ꧀ꦗ
+Warning: properties incomplete for index 60 = ꧀ꦱ
+Warning: properties incomplete for index 61 = ꧀ꦪ
+Warning: properties incomplete for index 62 = ꧀ꦤ
+Warning: properties incomplete for index 63 = ꧀ꦫ
+Warning: properties incomplete for index 64 = ꧀ꦔ
+Warning: properties incomplete for index 65 = ꦿ
+Warning: properties incomplete for index 66 = ꦫ
+Warning: properties incomplete for index 67 = ꦗ
+Warning: properties incomplete for index 68 = ꧈
+Warning: properties incomplete for index 69 = ꧀ꦥ
+Warning: properties incomplete for index 70 = ꦆ
+Warning: properties incomplete for index 71 = ꧀ꦩ
+Warning: properties incomplete for index 72 = ꧀ꦧ
+Warning: properties incomplete for index 73 = ꧖
+Warning: properties incomplete for index 74 = ꧘
+Warning: properties incomplete for index 76 = ꧉
+Warning: properties incomplete for index 77 = ꧀ꦝ
+Warning: properties incomplete for index 78 = ꦃ
+Warning: properties incomplete for index 79 = ꦝ
+Warning: properties incomplete for index 80 = ꧀ꦢ
+Warning: properties incomplete for index 81 = ꦚ
+Warning: properties incomplete for index 82 = ꦰ
+Warning: properties incomplete for index 83 = ꦡ
+Warning: properties incomplete for index 84 = ꦊ
+Warning: properties incomplete for index 85 = ꧀ꦟ
+Warning: properties incomplete for index 86 = ꧀ꦦ
+Warning: properties incomplete for index 87 = ꦑ
+Warning: properties incomplete for index 88 = ꦟ
+Warning: properties incomplete for index 89 = ꦨ
+Warning: properties incomplete for index 91 = ꦽ
+Warning: properties incomplete for index 92 = ꦉ
+Warning: properties incomplete for index 93 = ꧀ꦎ
+Warning: properties incomplete for index 94 = ꧗
+Warning: properties incomplete for index 95 = ꧙
+Warning: properties incomplete for index 96 = ꧊
+Warning: properties incomplete for index 97 = ꧔
+Warning: properties incomplete for index 98 = ꧓
+Warning: properties incomplete for index 99 = ꧆
+Warning: properties incomplete for index 100 = ꦛ
+Warning: properties incomplete for index 101 = ꧌
+Warning: properties incomplete for index 102 = ꧍
+Warning: properties incomplete for index 103 = ꧀ꦛ
+Warning: properties incomplete for index 104 = ꦈ
+Warning: properties incomplete for index 105 = ꧀ꦰ
+Warning: properties incomplete for index 106 = ꧅
+Warning: properties incomplete for index 107 = ꧀ꦖ
+Warning: properties incomplete for index 108 = ꧁
+Warning: properties incomplete for index 109 = ꧂
+Warning: properties incomplete for index 110 = ꦣ
+Warning: properties incomplete for index 114 = ꧃
+Warning: properties incomplete for index 115 = ꦻ
+Warning: properties incomplete for index 116 = ꧄
+Warning: properties incomplete for index 117 = ꦹ
+Warning: properties incomplete for index 118 = ꧏ
+Warning: properties incomplete for index 119 = ꧀ꦉ
+Warning: properties incomplete for index 120 = ꧟
+Warning: properties incomplete for index 121 = ꦳
+Warning: properties incomplete for index 124 = ꧀ꦜ
+Warning: properties incomplete for index 125 = ꦜ
+Warning: properties incomplete for index 126 = ꦞ
+Warning: properties incomplete for index 127 = ꦖ
+Warning: properties incomplete for index 128 = ꦙ
+Warning: properties incomplete for index 130 = ꦐ
+Warning: properties incomplete for index 131 = ꧀ꦚ
+Warning: properties incomplete for index 132 = ꧀ꦑ
+Warning: properties incomplete for index 133 = ꧀ꦣ
+Warning: properties incomplete for index 134 = ꧀ꦘ
+Warning: properties incomplete for index 135 = ꧀ꦓ
+Warning: properties incomplete for index 136 = ꧀ꦨ
+Warning: properties incomplete for index 137 = ꧀ꦞ
+Warning: properties incomplete for index 138 = ꧀ꦙ
+Warning: properties incomplete for index 139 = ꧀ꦊ
+Warning: properties incomplete for index 140 = ꦋ
+Warning: properties incomplete for index 141 = ꧀ꦋ
+Warning: properties incomplete for index 142 = ꦬ
+Warning: properties incomplete for index 143 = ꧀ꦬ
+Warning: properties incomplete for index 144 = ꧀ꦐ
+Warning: properties incomplete for index 145 = ꧞
+Warning: properties incomplete for index 146 = ꧀ꦄ
+Warning: properties incomplete for index 147 = ꦷ
+Config file is optional, continuing...
+Reducing Trie to SquishedDawg
+Reducing Trie to SquishedDawg
+Reducing Trie to SquishedDawg
+Moving ./tmp/jav_java/jav_java.Prada.exp0.box to ./jav_java-eval
+Moving ./tmp/jav_java/jav_java.Prada.exp0.tif to ./jav_java-eval
+Moving ./tmp/jav_java/jav_java.Prada.exp0.lstmf to ./jav_java-eval
+
+Created starter traineddata for language 'jav_java'
+
+
+Run lstmtraining to do the LSTM training for language 'jav_java'
+

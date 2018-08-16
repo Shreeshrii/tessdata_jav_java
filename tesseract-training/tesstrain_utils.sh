@@ -257,7 +257,7 @@ generate_font_image() {
         do
             outbase=${TRAINING_DIR}/${LANG_CODE}.${i}.${fontname}.exp${EXPOSURE}
 
-            local base_args="${common_args} --outputbase=${outbase} --max_pages=100"
+            local base_args="${common_args} --outputbase=${outbase} --max_pages=${MAXPAGES}"
 
             # add --writing_mode=vertical-upright to common_args if the font is
             # specified to be rendered vertically.

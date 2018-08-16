@@ -10,6 +10,7 @@ bestdata_dir=./tessdata_best
 tessdata_dir=./tessdata_best
 # local directory with language data -
 langdata_dir=./langdata
+
 # fonts directory for this system
 fonts_dir=../.fonts
 # fonts to use for training 
@@ -17,8 +18,9 @@ fonts_for_training=" \
   'Prada' \
   "
 texts_for_training=" \
-  '../javanese-aksara-training-text/result-100-with-whitespace/jav.training_text_1.txt.aksara.txt' \
+  './langdata/jav_java/jav_java.layer.training_text ' \
   "
+ 
 # output directories for this run
 train_output_dir=./$Lang-train
 # directory with training scripts - tesstrain.sh etc. - local

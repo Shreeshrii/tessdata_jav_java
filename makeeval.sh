@@ -13,7 +13,7 @@ langdata_dir=./langdata
 # directory with training scripts - tesstrain.sh etc. 
 tesstrain_dir=./tesseract-training
 # workspacedir
-work_dir=../tmp
+work_dir=./tmp
 # fonts directory for this system
 fonts_dir=../.fonts
 # fonts for computing evals of best fit model
@@ -37,7 +37,7 @@ OMP_THREAD_LIMIT=1   eval   bash $tesstrain_dir/tesstrain.sh \
 --langdata_dir $langdata_dir \
 --tessdata_dir  $tessdata_dir \
 --workspace_dir $work_dir \
---training_text $langdata_dir/$Lang/$Lang.eval.training_text \
+--training_text $langdata_dir/$Lang/$Lang.$EText.training_text \
 --output_dir $eval_output_dir
 
 fi

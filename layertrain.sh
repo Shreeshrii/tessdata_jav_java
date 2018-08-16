@@ -8,9 +8,9 @@ Lang=jav_java
 Base_lang=jav1
 
 # directory with the old 'best' training set
-bestdata_dir=~/tessdata_best
+bestdata_dir=./tessdata_best
 # tessdata directory for config files 
-tessdata_dir=~/tessdata_best
+tessdata_dir=./tessdata_best
 # downloaded directory with language data -
 langdata_dir=./langdata
 
@@ -28,7 +28,8 @@ OMP_THREAD_LIMIT=1  lstmtraining \
 --traineddata   $train_output_dir/$Lang/$Lang.traineddata \
 --max_iterations $ContinueIterations \
 --debug_interval -1 \
---train_listfile $test_output_dir/$Lang.training_files.txt \
+--sequential_training \
+--train_listfile $train_output_dir/$Lang.training_files.txt \
 --model_output  $trained_output_dir/layer
 
 echo "#### Building final trained file $best_trained_data_file ####"
