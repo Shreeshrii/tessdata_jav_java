@@ -3,6 +3,11 @@ Tesseract 4.0.0 training data for Javanese Script (Aksara Jawa)
 
 Built in response to [this issue](https://github.com/tesseract-ocr/langdata/issues/126)
 
+## Traineddata files
+
+* [jav1.traineddata](https://github.com/Shreeshrii/tessdata_jav_java/blob/master/tessdata_best/jav1.traineddata)
+* [jav2.traineddata](https://github.com/Shreeshrii/tessdata_jav_java/blob/master/tessdata_best/jav2.traineddata)
+
 ## To run training for Javanese script
 
 * Clone this repo
